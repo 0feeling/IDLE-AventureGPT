@@ -67,8 +67,8 @@ Step 5 👉 Place-le bien entre 2 quotes simples ''
 (tu peux aussi use des doubles " si tu préfères 😉😉 mais chez nous on use les simples 😉)
 
 Alright ❗️  
-✨ Tu viens send ton first message dans le Coding World 💌
-
+✨ Tu vas send ton first message dans le Coding World 💌
+Oh wow... Tu me rends déjà tellement proud of you 😿
 It's like a signal…  
 Un petit coucou digital au monde entier 🌍👾📡`,
 
@@ -137,12 +137,12 @@ Follow moi step by step 👇👇👇
 ' { } '
 
 🧩 Step 5 👉 Inside les accolades, place this new function :  
-' setInterval ' (, 4000)
+' setInterval '
 
-🧩 Step 6 👉 Add une paire de parenthèses qui sont collées :  
+🧩 Step 6 👉 Add une paire de parenthèses qui sont collées à cette new function :  
 ' () ' 
 
-🧩 Step 7 👉 Add inside la function qu'on a créé together before :  
+🧩 Step 7 👉 Add inside la new function qu'on a créé together before :  
 ' gainInspiration '
 
 🧩 Step 8 👉 Add une virgule collée à ' gainInspiration' :  

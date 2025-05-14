@@ -1,3 +1,4 @@
+/* index.jsx */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,4 +71,108 @@
   .animate-fade-in {
     animation: fade-in 0.5s ease-in;
   }
+}
+
+/* Bouton serotonine max manuel */
+button:enabled:active {
+  transform: scale(0.98);
+  transition: transform 0.05s ease-in;
+}
+.buy-button-glow {
+  position: relative;
+  box-shadow:
+    0 0 6px #facc15aa,
+    0 0 12px #facc1533;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+}
+
+.buy-button-glow:hover {
+  box-shadow:
+    0 0 8px #facc15dd,
+    0 0 14px #facc1566;
+}
+
+.buy-button-glow:active {
+  transform: scale(0.97);
+  box-shadow:
+    0 0 3px #facc1588,
+    0 0 6px #facc1555;
+}
+
+.sparkle-button {
+  background: linear-gradient(145deg, #facc15, #fbbf24);
+  box-shadow:
+    0 0 8px #facc15aa,
+    0 0 20px #facc1533;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  animation: shimmer 2.5s infinite ease-in-out;
+}
+
+.sparkle-button:hover {
+  box-shadow:
+    0 0 12px #fde68a,
+    0 0 24px #facc15aa;
+  transform: scale(1.02);
+}
+
+.sparkle-button:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 4px #facc15,
+    0 0 10px #facc15aa;
+}
+
+@keyframes shimmer {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.sparkle-text {
+  animation: sparkle-float 1s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes sparkle-float {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -60px) scale(1.5);
+  }
+}
+@keyframes radial-burst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(1.5) rotate(var(--r));
+  }
+}
+
+.burst-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #facc15;
+  pointer-events: none;
+  user-select: none;
+  animation: radial-burst 0.9s ease-out forwards;
 }

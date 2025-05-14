@@ -1,16 +1,16 @@
 import React from "react";
 import { useGPTOverlord } from "./GPTOverlordContext";
-import { getStepMessages } from "./stepConsoleMessages";
+// import { getStepMessages } from "./stepConsoleMessages";
 
 const stepCodeMessages = {
-  0: `// ======================================================
-// > Système initialisé…                                     ✓
-// > Utilisateur détectée                            ✓
-// ======================================================
+  0: `// ===================================================
+// > Système initialisé… ✓
+// > Utilisateur détecté ✓
+// ===================================================
 // > Lancement de l’aventure [OK]
 // > Utilisateur : {userName} {}
 // > Statut : prêt
-// ======================================================`,
+// ===================================================`,
   1: (userNom) =>
     `// -> Utilisateur : ${userNom} est prêt à commencer l’Aventure`,
   2: `// -> Boîte de dialogue déclenchée : 'Let's go!'`,
@@ -52,7 +52,7 @@ export default function CodeConsole() {
 
       <div className="flex-1 overflow-y-auto p-3 font-mono text-sm space-y-4">
         {/* Section Progression */}
-        <div>
+        {/* <div>
           <div className="text-green-400 mb-2">// Progression :</div>
           {getStepMessages(
             gameState.cristalMode
@@ -64,11 +64,11 @@ export default function CodeConsole() {
               <span className="text-green-400">✔</span> {line}
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Code validé */}
         <div>
-          <div className="text-green-400 mb-2">// Code validé :</div>
+          <div className="text-gray-400 mb-2">// Execution :</div>
           <pre className="text-gray-400 whitespace-pre-wrap border border-gray-700 rounded p-2">
             {(typeof stepCodeMessages[currentStep] === "function"
               ? stepCodeMessages[currentStep](currentUserNom)

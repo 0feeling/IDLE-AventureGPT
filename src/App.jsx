@@ -15,7 +15,9 @@ import CristalTerminal from "./CristalTerminal";
 import CatGPTTerminal from "./CatGPTTerminal";
 import MissionPanel from "./MissionPanel";
 import CodeConsole from "./CodeConsole";
-
+import "./glow.css";
+import UglyInspirationButton from "./UglyInspirationButton";
+import ConditionalInspirationButtons from "./ConditionalInspirationButtons";
 function App() {
   return (
     <GPTOverlordContextProvider>
@@ -31,7 +33,8 @@ function AppContent() {
     <div className="min-h-screen bg-gray-900 text-white flex flex-col px-2 sm:px-4">
       <StatsBar gameState={gameState} />
       <PassiveInspiration />
-      <InspirationButton />
+      {/* <InspirationButton /> */}
+      <ConditionalInspirationButtons />
       <UnlockAutoIdeaButton />
 
       <div className="flex-1 flex flex-col lg:flex-row gap-2 mt-2">

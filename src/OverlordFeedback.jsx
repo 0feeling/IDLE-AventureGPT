@@ -12,23 +12,28 @@ export default function OverlordFeedback({ messages }) {
 
       {/* Zone de messages */}
       <div className="overflow-y-auto max-h-[50vh] pr-1 space-y-2">
-        {messages.map((msg, index) => (
-          <pre
-            key={index}
-            className="bg-gray-900 p-3 rounded-md border border-gray-700 text-green-200 break-words whitespace-pre-wrap"
-          >
-            {msg.split("\n").map((line, lineIndex) => (
-              <div key={lineIndex} className="flex items-start">
-                {lineIndex === 0 ? (
-                  <span className="text-green-400 mr-2">➜</span>
-                ) : (
-                  <span className="w-4" />
-                )}
-                <span className="flex-1">{line}</span>
-              </div>
-            ))}
-          </pre>
-        ))}
+        {Array.isArray(messages)
+          ? messages.map((msg, index) => {
+              const text = typeof msg === "function" ? msg() : msg;
+              return (
+                <pre
+                  key={index}
+                  className="bg-gray-900 p-3 rounded-md border border-gray-700 text-green-200 break-words whitespace-pre-wrap"
+                >
+                  {text.split("\n").map((line, lineIndex) => (
+                    <div key={lineIndex} className="flex items-start">
+                      {lineIndex === 0 ? (
+                        <span className="text-green-400 mr-2">➜</span>
+                      ) : (
+                        <span className="w-4" />
+                      )}
+                      <span className="flex-1">{line}</span>
+                    </div>
+                  ))}
+                </pre>
+              );
+            })
+          : null}
       </div>
     </div>
   );

@@ -11,6 +11,20 @@
   }
 }
 
+/* Scrollbar custom — discret et cohérent avec l'interface */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #1f2937; /* gray-800 */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #4b5563; /* gray-600 */
+  border-radius: 4px;
+}
+
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
 }
@@ -83,4 +97,9 @@
 
 .animate-fade-in {
   animation: fade-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+button:enabled:active {
+  transform: scale(0.98);
+  transition: transform 0.05s ease-in;
 }

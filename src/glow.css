@@ -1,0 +1,39 @@
+/* src/glow.css */
+
+.generator-name-glow {
+  color: #facc15;
+  text-shadow:
+    0 0 2px #facc15,
+    0 0 6px #facc15;
+  animation: flicker 4s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.92;
+    text-shadow:
+      0 0 1px #facc15,
+      0 0 3px #facc15;
+  }
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 4px #facc15,
+      0 0 6px #facc15;
+  }
+}
+@keyframes glow-ring {
+  0% {
+    box-shadow: 0 0 10px #facc15;
+  }
+  50% {
+    box-shadow: 0 0 20px #facc15;
+  }
+  100% {
+    box-shadow: 0 0 10px #facc15;
+  }
+}
+
+.animate-glow-ring {
+  animation: glow-ring 1.5s ease-in-out infinite;
+}

@@ -97,32 +97,38 @@ Un nouveau niveau commence — prépare-toi pour un changement d’ambiance ❄�
 // Solutions exactes à copier-coller pour chaque étape
 const helpMessages = {
   0: [
-    "Alright, let’s go! Copy/Colle `console.log('Hello World!');` — avec les single quotes et le point-virgule si tu veux faire ça clean ✨ You got this!",
-    "Try with :\n `console.log('Hello World!');` — it’s like envoyer a little postcard to la console 📬"
+    "Try just writing ton prénom, like :\n`Tim` ✍️\nSans quotes, sans rien. Comme ça : une vraie signature de héros 🦸‍♀️",
+    "Exemple :\n`Lina`\nYup, just that 😺\nTon prénom brut, pur, simple 💛"
   ],
+
   1: [
-    "So close! Il te suffit d’écrire `function unlockButton()` suivi de `{}`. Donc copie ça : `function unlockButton() {}` 💛",
-    "Tu peux just write :\n `function unlockButton() {}` — une promise que tu vas fill it up later 😉"
+    "Essaie avec :\n`alert('let's go!')` ⚠️💬\nTu peux aussi mettre une autre phrase si tu veux… tant que c’est entre quotes simples !",
+    "Tu peux test avec :\n`alert('let’s go!')` ou `alert('C’est parti !')`\nUne alert(), un message, et BOOM 💥"
   ],
+
   2: [
-    "In your HTML, ajoute juste : `<button>Inspiration</button>` — super chill, super simple 🌸 Voilà ce qu’il te faut exactement.",
-    "Try this :\n `<button>Inspiration</button>` dans ton fichier HTML. This little guy is ready to become a magic trigger 🪄"
+    "Essaie ça :\n`console.log('Hello World!')` 📣\nC’est LE classic. Une vraie tradition du code !",
+    "Go avec :\n`console.log('Hello World!')`\nTu verras, ça s’affiche direct dans la console 🖥️✨"
   ],
+
   3: [
-    `Write une function comme 'gainInspiration() {}' — puis ton button, puis mets "onclick="gainInspiration()" dedans. Voilà ton combo de winner 🎯`,
-    `Like that:\n function gainInspiration() \n {} <button onclick="gainInspiration()">Inspiration</button> Power activated 🧩`
+    "Tu peux coller :\n`<button>Inspiration</button>` 🧠\nC’est un vrai HTML button, simple et efficace !",
+    "Essaie avec :\n`<button>Inspiration</button>`\nTu peux changer le mot entre les balises si tu veux un autre label 😸"
   ],
+
   4: [
-    "Keep it up! Crée une function `autoClick()` avec ce qu’il faut inside : `setInterval(gainInspiration, 1000);`. Du coup, ça donne : `function autoClick() { setInterval(gainInspiration, 1000); }` ⏱️",
-    "Essaie ça :\n `function autoClick() { setInterval(gainInspiration, 1000); }`. That’s ton timer qui bosse nonstop ⏰"
+    "Try this :\n`function gainInspiration() {}` 💡\nC’est une mini function vide, ready à être connectée au bouton !",
+    "Tu peux coller :\n`function gainInspiration() {}`\nTu peux y mettre un console.log ou laisser vide pour l’instant 🧙‍♂️"
   ],
+
   5: [
-    "Almost there! Tu dois écrire juste : `function unlockAutoIdea(){} avec inside les crochets la function autoClick();`. One line, one goal 🏁",
-    "You can go with :\n `function unlockAutoIdea() { autoClick(); }` — it’s like hitting the start button for tes idées 💫"
+    "Essaie :\n`function autoClick() { setInterval(gainInspiration, 4000); }` 🔁\nTu peux changer le nombre (4000 = 4 secondes) ⏱️",
+    "Go with :\n`function autoClick() { setInterval(gainInspiration, 4000); }`\nEt BOOM : ton code clic tout seul comme un robot 🤖"
   ],
+
   6: [
-    "Go ahead and try : `who.is.cristal()` dans la console. That’s the line, trust the process 🤫",
-    "Just copy this :\n `who.is.cristal()` — let the magic happen 👽"
+    "Try this dans la console :\n`who.is.cristal()` 🧬\nCette ligne a été trouvée dans un vieux log, maybe it’s a trigger… 👀",
+    "Copie ça juste pour voir :\n`who.is.cristal()`\nIci, les secrets ne dorment jamais longtemps 😼💤"
   ]
 };
 
@@ -263,26 +269,29 @@ function Editor() {
 
     if (gameState.tutorialStep === 0) {
       if (/^[a-zA-ZÀ-ÿ]{2,}$/.test(code)) {
-        setGameState((prev) => ({ ...prev, userNom: code.trim() }));
-        logToTerminal({
-          text: successMessagesByStep[1] || "Nom validé !",
-          source: "gpt"
-        });
-        advanceTutorialStep();
-        clearEditor();
+        const newNom = code.trim(); // 1. On stocke dans une variable locale
+        setGameState((prev) => ({ ...prev, userNom: newNom })); // 2. On met à jour l'état
+
+        // 3. On utilise DIRECTEMENT newNom pour le message
+        handleSuccess(
+          (nom) => `CatGPT : ✅ Nom reçu loud and clear! 🧠  
+    Bienvenue ${nom}, aventurier du code 🧭  
+    Ton Editor est now à ton nom ✍️✨`,
+          "gpt",
+          advanceTutorialStep,
+          logToTerminal,
+          clearEditor,
+          newNom // On passe la valeur locale ici
+        );
         return;
       }
     }
-    if (gameState.tutorialStep === -1) {
-      const readyRegex = /^(y|yes|oui)$/i;
-      if (readyRegex.test(cleanedCode)) {
+    // Étape 1 : Déclencher l'alerte après validation
+    if (gameState.tutorialStep === 1) {
+      if (isApproximateMatch(1, cleanedCode, matchByStep)) {
+        // Afficher l'alerte avant de passer à l'étape suivante
+        alert("Let's go!");
         advanceTutorialStep();
-        logToTerminal("CatGPT: Let's gooo ! 🚀");
-        clearEditor();
-        return;
-      } else {
-        logToTerminal("CatGPT: Tape juste 'y' pour confirmer ! 😸");
-        return;
       }
     }
 
@@ -382,9 +391,7 @@ function Editor() {
     <div className="flex flex-col bg-gray-800 border-r border-gray-700 h-[400px]">
       <div className="bg-gray-900 p-2 flex justify-between items-center border-b border-gray-700">
         <span className="text-blue-300 text-sm">
-          {gameState.tutorialStep === 0 && gameState.userNom
-            ? `${gameState.userNom}'s Editor`
-            : "Editor.js"}
+          {gameState.userNom ? `${gameState.userNom}'s Editor.js` : "Editor.js"}
         </span>
         <button
           onClick={handleCodeExecution}

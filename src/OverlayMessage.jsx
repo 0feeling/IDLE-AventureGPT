@@ -71,18 +71,21 @@ function OverlayMessage() {
 
         {showAutoMessage && (
           <>
-            <h2 className="text-2xl font-bold text-blue-400 animate-pulse">
-              ⚡ Auto-Générateur Débloqué !
-            </h2>
-            <p className="text-gray-300 text-base leading-relaxed">
+            <h1 className="text-2xl font-bold underline text-blue-400 animate-pulse">
+              ⚡ Auto-Générateur Débloqué ⚡
+            </h1>
+            <h2 className="text-gray-300 text-base leading-relaxed">
               Tu viens d’activer la{" "}
               <strong>production passive d’inspiration</strong>.
               <br />
-              Dès maintenant, ton esprit travaille tout seul 🧠💡
-            </p>
-            <p className="text-yellow-300 text-sm mt-2">
-              C’est le début d’une nouvelle ère...
-            </p>
+              <br />
+              <p className="text-yellow-300 text-xl mt-2">
+                💡 Les générateurs produisent maintenant de l'Inspiration 💡
+              </p>
+              <br />
+              "L'Inspiration ne rime pas forcément avec la transpiration"
+              <p className="font-style: italic"> - Bertrand Lavier</p>
+            </h2>
             <button
               onClick={() => setShowAutoMessage(false)}
               className="mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded shadow-md"

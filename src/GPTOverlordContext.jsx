@@ -120,17 +120,27 @@ export const GPTOverlordContextProvider = ({ children }) => {
   // Suppression de cristalStep local, utilisation de gameState.cristalStep à la place
   const [hideOverlord, setHideOverlord] = useState(false);
 
-  // Avancer dans les étapes de Cristal
+  // Mettre à jour la validation des missions de Cristal
   const advanceCristalStep = () => {
     setGameState((prev) => {
       const newStep = prev.cristalStep + 1;
+      const updatedCristalMissions = [...prev.cristalMissions]; // ✅ Une seule déclaration
 
-      // Mettre à jour la validation des missions de Cristal
-      const updatedCristalMissions = [...prev.cristalMissions];
+      // Logique de validation pour purifierLaPage
+      if (prev.cristalStep === 2) {
+        const cleanedCode = prev.code.replace(/\s+/g, "").toLowerCase();
+        const isValid =
+          cleanedCode.includes("purifierlapage") &&
+          cleanedCode.includes(".replace(");
+
+        if (isValid) {
+          updatedCristalMissions[2].validated = true;
+        }
+      }
       if (prev.cristalStep === 1) {
         const editor = document.querySelector("textarea");
         if (editor?.style.background.includes("linear-gradient")) {
-          updatedCristalMissions[1].validated = true;
+          updatedCristalMissions[prev.cristalStep].validated = true; // Utiliser l'index dynamique
         }
       }
       if (updatedCristalMissions[prev.cristalStep]) {
@@ -209,23 +219,25 @@ export const GPTOverlordContextProvider = ({ children }) => {
   // Fonction pour avancer dans le tutoriel
   const advanceTutorialStep = () => {
     setGameState((prev) => {
-      const newStep = prev.tutorialStep + 1;
-      const updatedMissions = [...prev.missions];
+      const currentStep = prev.tutorialStep;
+      const nextStep = currentStep + 1;
+      if (prev.tutorialStep >= prev.missions.length - 1) return prev;
 
-      // Valider la mission actuelle
-      if (updatedMissions[newStep]) {
-        updatedMissions[newStep].validated = true;
+      // Crée une copie mise à jour des missions
+      const updatedMissions = prev.missions.map((mission, index) => {
+        if (index === currentStep) {
+          return { ...mission, validated: true };
+        }
+        return mission;
+      });
 
-        return {
-          ...prev,
-          tutorialStep: newStep,
-          missions: updatedMissions,
-          stepLogs: [],
-          codeHistory: prev.codeHistory + "\n" + prev.code,
-          code: ""
-        };
-      }
-      return prev;
+      return {
+        ...prev,
+        tutorialStep: nextStep,
+        missions: updatedMissions,
+        // Réinitialise le code après validation
+        code: ""
+      };
     });
   };
 
