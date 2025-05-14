@@ -52,7 +52,13 @@ const cristalMissions = {
     ? /^m$|while\s*\(\s*true\s*\)\s*\{[^}]*console\.log\s*\(\s*(['"])\s*vive\s+cristal\s*\1\s*\)\s*;?[^}]*\}/i
     : /while\s*\(\s*true\s*\)\s*\{[^}]*console\.log\s*\(\s*(['"])\s*vive\s+cristal\s*\1\s*\)\s*;?[^}]*\}/i,
 
-  4: DEV_MODE ? /^m$|delete\s+CatGPT\s*;?/i : /delete\s+CatGPT\s*;?/i
+  4: DEV_MODE
+    ? /^m$|^(supprimerCatGPT|deleteCatGPT)\s*;?\s*$/i
+    : /^(supprimerCatGPT|deleteCatGPT)\s*;?\s*$/i,
+
+  5: DEV_MODE
+    ? /^m$|^(débloquerBoutonDoré|unlockGoldenButton)\s*\(\s*\)\s*;?\s*$/i
+    : /^(débloquerBoutonDoré|unlockGoldenButton)\s*\(\s*\)\s*;?\s*$/i
 };
 
 const successMessagesCristal = {
@@ -148,8 +154,17 @@ document.corps.interieurHTML = document.corps.interieurHTML
 .remplace("EnglishWord4", "MotFrançais4")
 }. `
   ],
-  3: [`Créez donc au plus vite cette Boucle, c'est plus que nécessaire ! `],
-  4: [`N'hésitez pas ! Ecrivez donc: " delete CatGPT " dans votre éditeur`]
+  3: [
+    `Créez donc au plus vite cette Boucle,
+    c'est plus que nécessaire ! `
+  ],
+  4: [
+    `N'hésitez pas ! 
+    Ecrivez donc: " delete CatGPT " dans votre éditeur. 
+    Pensez à la Récompense`
+  ],
+  5: [`Vous la voulez cette récompense Oui ou Non ?`],
+  6: [`Continuez donc à cliquer`]
 };
 
 // Fonction de validation

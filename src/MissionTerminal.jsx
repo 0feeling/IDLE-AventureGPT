@@ -179,7 +179,7 @@ J’ai trouvé une weird line dans ce old log.txt 📂📄 :
 Try de la run dans la console... 🎯
 
 Peut-être qu’un other Helper est en train de sleep quelque part 😼💤  
-I hope il sera aussi nice que moi ! 💛`
+I hope qu'il sera aussi nice que moi ! 💛`
 };
 
 export default function MissionTerminal() {

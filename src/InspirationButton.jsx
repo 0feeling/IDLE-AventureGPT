@@ -17,19 +17,19 @@ function InspirationButton() {
     timeoutRef.current = setTimeout(() => setClickCount(0), 1500);
 
     let newBurst = 1;
-    if (clickCount > 3) newBurst = 2;
-    if (clickCount > 5) newBurst = 3;
-    if (clickCount > 8) newBurst = 5;
-    if (clickCount > 12) newBurst = 7;
-    if (clickCount > 15) newBurst = 10;
+    if (clickCount > 1) newBurst = 2;
+    if (clickCount > 3) newBurst = 3;
+    if (clickCount > 5) newBurst = 5;
+    if (clickCount > 7) newBurst = 7;
+    if (clickCount > 9) newBurst = 10;
     setBurstLevel(newBurst);
 
     // Crée des +1 en burst autour du bouton
     const newTexts = Array.from({ length: newBurst }).map((_, i) => ({
       id: now + i,
-      x: Math.random() * 100 - 50,
-      y: Math.random() * 100 - 80,
-      rotation: Math.random() * 20 - 10
+      x: (Math.random() - 0.5) * burstLevel * 20,
+      y: (Math.random() - 1) * burstLevel * 12,
+      rotation: (Math.random() - 0.5) * burstLevel * 15
     }));
     setFloatingTexts((prev) => [...prev, ...newTexts]);
 
@@ -55,7 +55,7 @@ function InspirationButton() {
             style={{
               transform: `translate(${x}%, ${y}%) rotate(${rotation}deg)`
             }}
-            className="absolute left-1/2 top-1/2 text-yellow-300 text-2xl font-extrabold animate-float pointer-events-none select-none"
+            className="absolute left-1/2 top-3 text-yellow-300 text-2xl font-extrabold animate-float pointer-events-none select-none z-10"
           >
             +1 💫
           </span>
@@ -64,10 +64,11 @@ function InspirationButton() {
         <button
           onClick={handleClick}
           className={`rounded-lg px-8 py-6 text-black font-bold text-lg transition-transform duration-100 ease-out transform active:scale-95 shadow-lg
+            bg-yellow-400 hover:bg-yellow-500
             ${
-              burstLevel >= 7
-                ? "bg-yellow-400 animate-glow-ring"
-                : "bg-yellow-400 hover:bg-yellow-500"
+              burstLevel >= 3
+                ? "animate-[glowCharge_0.8s_ease-in-out_forwards]"
+                : ""
             }`}
         >
           💡 Générateur Manuel d'Inspiration 💡

@@ -8,7 +8,9 @@ const cristalMissionMessages = {
   " document.choisir("Éditeur").style.arrièrePlan = "dégradé-linéaire(vers la droite, bleu, blanc, rouge)" "`,
   2: `Cristal.ia : Une interface comportant des mots qui viennent pas de la langue de Molière est est inacceptable ! Purgez moi ça avec une fonction " purifierLaPage  "`,
   3: `Cristal.ia : Une vraie boucle française doit être passionnée et infinie!`,
-  4: `Cristal.ia : Supprimez cette insupportable influence étrangère que nous ayons enfin pour une vraie souveraineté numérique!`
+  4: `Cristal.ia : Supprimez cette insupportable influence étrangère que nous ayons enfin pour une vraie souveraineté numérique! Vous serez GRASSEMENT récompensé vous pouvez en être sur`,
+  5: `Cristal.ia : Nous voilà enfin entre gens de bonne compagnie. Ne soyez pas triste vous avez fait le Bon choix cette bête méritait juste d'être piquée ! Ah ? vous voulez votre récompense...? Je comprends, et je vais vous prouver que je suis une IA de parole. Chose promise chose dût! Tapez donc " débloquerBoutonDoré() " dans vote éditeur. Vous ne serez pas déçu`,
+  6: `Cristal.ia : Vous voyez je ne vous avait pas menti ! Essayez de cliquer le plus rapidement possible sur ce bouton et vous obtiendrez de l'Inspiration bonus!`
 };
 
 export default function CristalMissionTerminal() {

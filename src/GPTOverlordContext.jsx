@@ -78,6 +78,14 @@ const cristalMissions = [
   {
     instruction: "Faire un Choix",
     validated: false
+  },
+  {
+    instruction: "Récuperer sa Récompense",
+    validated: false
+  },
+  {
+    instruction: "Bien mal acquis ne profite Jamais",
+    validated: false
   }
 ];
 
@@ -98,7 +106,8 @@ export const GPTOverlordContextProvider = ({ children }) => {
     inspirationPerSecond: 0, // Nouveau: taux total d'inspiration/seconde
     stepLogs: [],
     cristalMode: false, // Indique si on est en mode Cristal
-    codeHistory: ""
+    codeHistory: "",
+    buttons: { uglyButtonVisible: true, inspirationButtonVisible: false }
   });
   const setUserNom = (nom) => {
     setGameState((prev) => ({ ...prev, userNom: nom }));
@@ -146,11 +155,15 @@ export const GPTOverlordContextProvider = ({ children }) => {
       if (updatedCristalMissions[prev.cristalStep]) {
         updatedCristalMissions[prev.cristalStep].validated = true;
 
-        if (newStep >= 5) {
+        if (newStep >= 6) {
           setGameState((prev) => ({
             ...prev,
             hideOverlord: true,
-            cristalMode: false
+            cristalMode: false,
+            buttons: {
+              uglyButtonVisible: false,
+              inspirationButtonVisible: true
+            }
           }));
         }
       }
@@ -181,7 +194,7 @@ export const GPTOverlordContextProvider = ({ children }) => {
         cristalStep: newStep,
         cristalMissions: updatedCristalMissions,
         inspirationPerSecond: shouldHideOverlord
-          ? prev.inspirationPerSecond * 2
+          ? prev.inspirationPerSecond * 1.2
           : prev.inspirationPerSecond,
         code: "" // Effacer le code à chaque avancée d'étape
       };
