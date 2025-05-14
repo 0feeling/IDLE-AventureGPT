@@ -49,7 +49,7 @@ function AppContent() {
         {/* Colonne centrale - Éditeur + Console */}
         <div className="lg:w-1/3 flex flex-col">
           <div className="flex-1 border border-gray-700 rounded-lg overflow-hidden">
-            <Editor /> {/* Suppression des props */}
+            <Editor />
           </div>
           <div className="h-[500px] border border-gray-700 rounded-lg mt-2">
             <CodeConsole />

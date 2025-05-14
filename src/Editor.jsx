@@ -7,28 +7,28 @@ const DEV_MODE = true;
 
 const matchByStep = {
   0: DEV_MODE
+    ? /^m$|^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i
+    : /^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i,
+
+  1: DEV_MODE
+    ? /^m$|alert\s*\(\s*(['"])\s*let'?s\s+go!?[\s!]*\1\s*\)\s*;?/i
+    : /alert\s*\(\s*(['"])\s*let'?s\s+go!?[\s!]*\1\s*\)\s*;?/i,
+
+  2: DEV_MODE
     ? /^m$|console\.log\s*\(\s*(['"])\s*!*hello[\s-]?world!?\s*!*\1\s*\)\s*;?/i
     : /console\.log\s*\(\s*(['"])\s*!*hello[\s-]?world!?\s*!*\1\s*\)\s*;?/i,
 
-  1: DEV_MODE
-    ? /^m$|function\s+unlockButton\s*\(\s*\)\s*\{?/i
-    : /function\s+unlockButton\s*\(\s*\)\s*\{?/i,
-
-  2: DEV_MODE
+  3: DEV_MODE
     ? /^m$|<button[^>]*>\s*inspiration\s*<\/button>/i
     : /<button[^>]*>\s*inspiration\s*<\/button>/i,
 
-  3: DEV_MODE
-    ? /^m$|(?=.*g[ae]i?n)(?=.*spi)(?=.*rat)(?=.*ion)(?=.*click)/is
-    : /(?=.*g[ae]i?n)(?=.*spi)(?=.*rat)(?=.*ion)(?=.*click)/is,
-
   4: DEV_MODE
-    ? /^m$|function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*1000\s*\)\s*;?\s*\}?/i
-    : /function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*1000\s*\)\s*;?\s*\}?/i,
+    ? /^m$|function\s+gainInspiration\s*\(\s*\)\s*\{?[^}]*\}?/i
+    : /function\s+gainInspiration\s*\(\s*\)\s*\{?[^}]*\}?/i,
 
   5: DEV_MODE
-    ? /^m$|function\s+unlockAutoIdea\s*\(\s*\)\s*\{\s*autoClick\s*\(\s*\)\s*;?\s*\}?/i
-    : /function\s+unlockAutoIdea\s*\(\s*\)\s*\{\s*autoClick\s*\(\s*\)\s*;?\s*\}?/i,
+    ? /^m$|function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*\d+\s*\)\s*;?\s*\}/i
+    : /function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*\d+\s*\)\s*;?\s*\}/i,
 
   6: DEV_MODE
     ? /^m$|\b(who\.is\.cristal\s*\(\s*\)|system\.debug\s*\(.*\))/i
@@ -64,14 +64,34 @@ const successMessagesCristal = {
 };
 
 const successMessagesByStep = {
-  "-1": "CatGPT : Excellent ! Now you are ready ! on va pouvoir commencer les true things 💪",
-  0: "CatGPT : Perfect ! Tu sais now show un message in the console 📢",
-  1: "CatGPT : Une function créée ! Ça y est, tu commences à manipulate le code comme un vrai wizard 🔮",
-  2: "CatGPT : Nice ! Tu viens d’ajouter ton premier bouton HTML 🎯",
-  3: "CatGPT : Magique ! Ton bouton déclenche maintenant une vraie action ✨",
-  4: "CatGPT : Good Job ! Ta machine commence to product automatiquement ⏱️",
-  5: "CatGPT : Factory en route ! Tu sais enclencher l’automatisation 🏭",
-  6: "CatGPT : Je te laisses meet Cristal ! Je vais chercher de nouvelles tasks for you 👁️"
+  0: ``,
+  1: (userNom) => `CatGPT : ✅ Nom reçu loud and clear! 🧠  
+  Bienvenue ${userNom}, aventurier du code 🧭  
+  Ton Editor est now à ton nom ✍️✨`,
+
+  2: `CatGPT :✅ Pop-up alert confirmed! 💥💬  
+Tu viens de déclencher ta toute première interaction avec le browser 🎉  
+Le code t’a écouté... et il a répondu 🔊`,
+
+  3: `CatGPT :✅ Message visible dans la console! 🖥️📣  
+‘Hello World!’ est now dans le flux des logs 💌  
+Un premier message envoyé vers l’infini et au-delà 🌌🚀`,
+
+  4: `CatGPT :✅ HTML button created! 🖱️🔘  
+Tu viens d’ajouter un vrai élément interactif à ta page 💡  
+Un petit pas pour le dev, un grand pour ton projet 🌍`,
+
+  5: `CatGPT :✅ Function active! ⚙️💡  
+Ton bouton a now un vrai effet 💥  
+Tu génères de l’inspiration à chaque clic 🔁🧠`,
+
+  6: `CatGPT :✅ Auto-Clicker activé! 🤖🔁  
+Ton code travaille pour toi, même quand tu fais une pause ☕🎮  
+Automatisation : 1 — Répétition manuelle : 0 🧠💸`,
+
+  7: `CatGPT :✅ Commande secrète exécutée! 🧬👀  
+Cristal s’est réveillée... 💎  
+Un nouveau niveau commence — prépare-toi pour un changement d’ambiance ❄️🧊`
 };
 
 // Solutions exactes à copier-coller pour chaque étape
@@ -139,13 +159,16 @@ const isApproximateMatch = (step, code, patternSet) => {
 
 // Gestionnaire de succès
 const handleSuccess = (
-  message,
+  messageOrFn,
   source,
   advanceFn,
   logToTerminal,
-  clearEditor
+  clearEditor,
+  userName = null
 ) => {
-  // Logique existante
+  const message =
+    typeof messageOrFn === "function" ? messageOrFn(userName) : messageOrFn;
+
   logToTerminal({ text: message, source });
   advanceFn();
   clearEditor();
@@ -238,6 +261,18 @@ function Editor() {
   const handleCodeExecution = () => {
     const cleanedCode = code.trim();
 
+    if (gameState.tutorialStep === 0) {
+      if (/^[a-zA-ZÀ-ÿ]{2,}$/.test(code)) {
+        setGameState((prev) => ({ ...prev, userNom: code.trim() }));
+        logToTerminal({
+          text: successMessagesByStep[1] || "Nom validé !",
+          source: "gpt"
+        });
+        advanceTutorialStep();
+        clearEditor();
+        return;
+      }
+    }
     if (gameState.tutorialStep === -1) {
       const readyRegex = /^(y|yes|oui)$/i;
       if (readyRegex.test(cleanedCode)) {
@@ -300,12 +335,13 @@ function Editor() {
         "gpt",
         advanceTutorialStep,
         logToTerminal,
-        clearEditor
+        clearEditor,
+        gameState.userNom
       );
 
       if (isCatGPTValid && !isExact) {
         const approxMessage =
-          "⏳ Tu y étais presque mais j'ai légèrement modifié ton code pour que tout fonctionne parfaitement !";
+          "⏳ Almost ! Tu y étais presque du coup légèrement modifié ton code pour que tout fonctionne perfectly ! 👌";
         logToTerminal({ text: approxMessage, source: "gpt" });
       }
     } else {
@@ -344,9 +380,12 @@ function Editor() {
 
   return (
     <div className="flex flex-col bg-gray-800 border-r border-gray-700 h-[400px]">
-      {/* En-tête */}
       <div className="bg-gray-900 p-2 flex justify-between items-center border-b border-gray-700">
-        <span className="text-blue-300 text-sm">Editor.js</span>
+        <span className="text-blue-300 text-sm">
+          {gameState.tutorialStep === 0 && gameState.userNom
+            ? `${gameState.userNom}'s Editor`
+            : "Editor.js"}
+        </span>
         <button
           onClick={handleCodeExecution}
           className="bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded text-xs"

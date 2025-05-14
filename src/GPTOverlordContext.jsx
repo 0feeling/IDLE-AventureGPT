@@ -17,42 +17,38 @@ generatorsData.forEach((gen) => {
 // Missions du tutoriel de CatGPT
 const tutorialMissions = [
   {
-    instruction: "Êtes-vous prêt à commencer l'aventure ?",
+    instruction:
+      "Saisir une valeur textuelle personnelle dans l’espace d’édition, destinée à identifier l’utilisateur au sein du système.",
     validated: false
   },
   {
     instruction:
-      "Générer une sortie explicite dans la console, contenant une chaîne de caractères standard utilisée pour la validation d'un environnement d'exécution.",
+      "Déclencher un signal d’alerte à l’écran en utilisant la fonction native d’interruption visuelle du navigateur.",
     validated: false
   },
   {
     instruction:
-      "Déclarer une entité procédurale nommée selon la convention camelCase, chargée de rendre accessible une interface bloquée initialement.",
+      "Transmettre un message au canal de sortie console via une instruction standard de journalisation.",
     validated: false
   },
   {
     instruction:
-      "Ajouter à la structure du document HTML un élément interactif de type bouton affichant une instruction textuelle explicite.",
+      "Injecter dans la structure HTML un composant interactif minimaliste permettant une activation manuelle.",
     validated: false
   },
   {
     instruction:
-      "Définir une fonction identifiable, destinée à être déclenchée par l'action utilisateur sur l'élément interactif. Son rôle est de produire un effet assimilable à une acquisition de ressource.",
+      "Instancier un processus nommé sous forme de fonction, déclenché par l’action de l’utilisateur sur le composant interactif.",
     validated: false
   },
   {
     instruction:
-      "Établir une routine nommée, conçue pour simuler un déclenchement automatique périodique via une boucle temporelle implicite.",
+      "Implémenter une séquence d’exécution cyclique afin d’automatiser une action utilisateur à intervalle régulier.",
     validated: false
   },
   {
     instruction:
-      "Créer une fonction distincte permettant l'activation conditionnelle du processus d'exécution automatique défini précédemment.",
-    validated: false
-  },
-  {
-    instruction:
-      "Provoquer l'exécution manuelle d'au moins une interface interne exposée à l'espace global, identifiée par un nom composé hiérarchique.",
+      "Lancer une commande spécifique réservée, visant à déverrouiller un module avancé du système.",
     validated: false
   }
 ];
@@ -92,7 +88,8 @@ export const GPTOverlordContextProvider = ({ children }) => {
   const [gameState, setGameState] = useState({
     inspiration: 0, //valeur de départ
     autoIdeaUnlocked: false,
-    tutorialStep: -1,
+    tutorialStep: 0,
+    userNom: "",
     cristalStep: 0, // Ajouté pour synchroniser avec l'état local
     code: "", // Initialiser avec une chaîne vide
     generators: formattedGenerators,
@@ -103,6 +100,9 @@ export const GPTOverlordContextProvider = ({ children }) => {
     cristalMode: false, // Indique si on est en mode Cristal
     codeHistory: ""
   });
+  const setUserNom = (nom) => {
+    setGameState((prev) => ({ ...prev, userNom: nom }));
+  };
 
   const clearTerminalLogsBySource = (source) => {
     setTerminalLogs((prev) => prev.filter((log) => log.source !== source));
@@ -347,6 +347,7 @@ export const GPTOverlordContextProvider = ({ children }) => {
       value={{
         gameState,
         setGameState,
+        setUserNom,
         terminalLogs,
         setTerminalLogs,
         advanceTutorialStep,
