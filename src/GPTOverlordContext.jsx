@@ -1,11 +1,11 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import generatorsData from "./generatorsData"; // Import des données des générateurs
+import GeneratorsData from "./GeneratorsData"; // Import des données des générateurs
 import { ValidationService } from "./ValidationService";
 import { catMissions } from "./Editor.jsx";
 
 // Conversion des données du générateur au format attendu
 const formattedGenerators = {};
-generatorsData.forEach((gen) => {
+GeneratorsData.forEach((gen) => {
   formattedGenerators[gen.id] = {
     name: gen.name,
     baseCost: gen.baseCost,
