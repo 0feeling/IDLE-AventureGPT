@@ -33,7 +33,7 @@ function UglyInspirationButton({ isActive }) {
 
         <button
           onClick={handleClick}
-          className={`rounded p-4 text-sm font-semibold transition-transform duration-100 ease-out ${
+          className={`rounded p-4 text-xl font-semibold transition-transform duration-100 ease-out ${
             isActive
               ? "bg-white text-black active:scale-95"
               : "bg-gray-600 text-black cursor-not-allowed"

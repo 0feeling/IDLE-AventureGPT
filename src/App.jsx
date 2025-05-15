@@ -30,7 +30,7 @@ function AppContent() {
   const { gameState } = useGPTOverlord();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col px-2 sm:px-4">
+    <div className="min-h-screen bg-gradient-to-bl from-gray-800 via-gray-900 to-black text-white flex flex-col px-2 sm:px-4">
       <StatsBar gameState={gameState} />
       <PassiveInspiration />
       {/* <InspirationButton /> */}
@@ -39,11 +39,11 @@ function AppContent() {
 
       <div className="flex-1 flex flex-col lg:flex-row gap-2 mt-2">
         {/* Colonne gauche - Terminaux */}
-        <div className="lg:w-1/3 flex flex-col border border-gray-700 rounded-lg overflow-scroll">
+        <div className="lg:w-1/3 flex flex-col rounded-lg overflow-scroll">
           <div className="flex-1">
             <CatGPTTerminal />
           </div>
-          <div className="flex-1 border-t border-gray-700">
+          <div className="flex-1">
             {gameState.cristalMode && <CristalTerminal />}
           </div>
         </div>
@@ -54,7 +54,7 @@ function AppContent() {
           <div className="flex-1 border border-gray-700 rounded-lg overflow-hidden">
             <Editor />
           </div>
-          <div className="h-[500px] border border-gray-700 rounded-lg mt-2">
+          <div className="h-[500px] rounded-lg mt-2">
             <CodeConsole />
           </div>
         </div>

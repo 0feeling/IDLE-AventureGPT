@@ -71,14 +71,14 @@ export default function CodeConsole() {
 
   return (
     <div className="bg-gray-800 border-t border-gray-700 h-96 flex flex-col">
-      <div className="bg-gray-900 p-3 border-b border-gray-700 flex justify-between items-center">
+      <div className="bg-gray-900 p-3 border-b border-gray-700 rounded-t flex justify-between items-center">
         <h2 className="text-yellow-300 text-xs uppercase tracking-wide font-semibold">
           CONSOLE
         </h2>
         <span className="text-gray-400 text-xs">v1.0.0</span>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-3 font-mono text-sm space-y-4">
+      <div className="flex-1 overflow-y-auto p-3 font-mono border border-gray-700 text-sm space-y-4">
         {/* Section Progression */}
         {/* <div>
           <div className="text-green-400 mb-2">// Progression :</div>

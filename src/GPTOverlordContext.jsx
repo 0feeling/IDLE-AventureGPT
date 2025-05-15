@@ -58,7 +58,7 @@ const tutorialMissions = [
 const cristalMissions = [
   {
     instruction:
-      'Une variable est comparable à une boîte numérique que l’on nomme à l’aide d’une ou plusieurs lettres.\nElle permet de stocker une valeur afin de pouvoir la réutiliser ou la modifier plus tard :\n\n\t    1. Pour créer / déclarer une variable, on utilise le mot-clé let.\n\n\t    2. Ce mot-clé est suivi d’un nom : il doit commencer par une lettre, ne contenir aucun espace, et ne pas être un mot réservé.\n\n\t    3. Le symbole = permet d’assigner une valeur à cette variable.\n\n\t    4. Cette valeur peut être un texte (ex. "message"), un nombre (ex. 3.14), ou un booléen, c’est-à-dire une valeur logique comme true (vrai) ou false (faux).\n\n\t    5. L’instruction se termine par un point-virgule ;.\n\nExemple :\n    let actif = true;\nCela signifie que la variable nommée actif contient la valeur logique "vrai".',
+      'Une variable est comparable à une boîte numérique que l’on nomme à l’aide d’une ou plusieurs lettres.\nElle permet de stocker une valeur afin de pouvoir la réutiliser ou la modifier plus tard :\n\n 1. Pour créer / déclarer une variable, on utilise le mot-clé let.\n\n\t2. Ce mot-clé est suivi d’un nom : il doit commencer par une lettre, ne contenir aucun espace, et ne pas être un mot réservé.\n\n\t    3. Le symbole = permet d’assigner une valeur à cette variable.\n\n\t    4. Cette valeur peut être un texte (ex. "message"), un nombre (ex. 3.14), ou un booléen, c’est-à-dire une valeur logique comme true (vrai) ou false (faux).\n\n\t    5. L’instruction se termine par un point-virgule ;.\n\nExemple :\n    let actif = true;\nCela signifie que la variable nommée actif contient la valeur logique "vrai".',
     validated: false
   },
   {
