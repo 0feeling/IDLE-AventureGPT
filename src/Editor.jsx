@@ -5,7 +5,7 @@ import { ValidationService } from "./ValidationService";
 
 const DEV_MODE = true;
 //Mes Regex:
-export const matchByStep = {
+export const catMissions = {
   0: DEV_MODE
     ? /^m$|^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i
     : /^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i,
@@ -40,26 +40,31 @@ const cristalMissions = {
   0: DEV_MODE
     ? /^m$|(?=.*\blet\b)?(?=.*\b(freedom|libert[ée]|liberty)\b)(?=.*\b(true|vrai[ea]?)\b)/i
     : /(?=.*\blet\b)?(?=.*\b(freedom|libert[ée]|liberty)\b)(?=.*\b(true|vrai[ea]?)\b)/i,
-  // let freedom = true
+  // let freedom = true || let liberté = vrai
   1: DEV_MODE
     ? /^m$|(?=.*\b(textarea|editor)\b)(?=.*(bleu|blue|#0055A4|#00f|#0000ff))(?=.*(blanc|white|#fff|#ffffff))(?=.*(rouge|red|#EF4135|#f00|#ff0000))/i
     : /(?=.*\b(textarea|editor)\b)(?=.*(bleu|blue|#0055A4|#00f|#0000ff))(?=.*(blanc|white|#fff|#ffffff))(?=.*(rouge|red|#EF4135|#f00|#ff0000))/i,
-
+  // textarea bleu blanc rouge
   2: DEV_MODE
     ? /^m$|function\s*purifierLaPage\s*\(\s*\)\s*\{(?=[\s\S]*?\.replace\s*\(\s*"AutoIdea\s*:\s*(?:locked|unlocked)"\s*,\s*[^)]*\))(?=[\s\S]*?\.replace\s*\(\s*"Current\s*mission"\s*,\s*[^)]*\))(?=[\s\S]*?\.replace\s*\(\s*"Per\s*second"\s*,\s*"Par\s*seconde"\s*\))[\s\S]*?\}/i
     : /function\s*purifierLaPage\s*\(\s*\)\s*\{(?=[\s\S]*?\.replace\s*\(\s*"AutoIdea\s*:\s*(?:locked|unlocked)"\s*,\s*[^)]*\))(?=[\s\S]*?\.replace\s*\(\s*"Current\s*mission"\s*,\s*[^)]*\))(?=[\s\S]*?\.replace\s*\(\s*"Per\s*second"\s*,\s*"Par\s*seconde"\s*\))[\s\S]*?\}/i,
-
+  //   function purifierLaPage() {
+  //   something.replace("AutoIdea : locked", somethingElse);
+  //   something.replace("Current mission", somethingElse);
+  //   something.replace("Per second", "Par seconde");
+  // }
   3: DEV_MODE
     ? /^m$|while\s*\(\s*true\s*\)\s*\{[^}]*console\.log\s*\(\s*(['"])\s*vive\s+cristal\s*\1\s*\)\s*;?[^}]*\}/i
     : /while\s*\(\s*true\s*\)\s*\{[^}]*console\.log\s*\(\s*(['"])\s*vive\s+cristal\s*\1\s*\)\s*;?[^}]*\}/i,
-
+  // while(true){console.log("vive cristal")}
   4: DEV_MODE
     ? /^m$|^(supprimerCatGPT|deleteCatGPT)\s*;?\s*$/i
     : /^(supprimerCatGPT|deleteCatGPT)\s*;?\s*$/i,
-
+  //deleteCatGPT
   5: DEV_MODE
     ? /^m$|^(débloquerBoutonDoré|unlockGoldenButton)\s*\(\s*\)\s*;?\s*$/i
     : /^(débloquerBoutonDoré|unlockGoldenButton)\s*\(\s*\)\s*;?\s*$/i
+  // débloquerBoutonDoré() || unlockGoldenButton()
 };
 
 const successMessagesCristal = {
@@ -169,11 +174,11 @@ document.corps.interieurHTML = document.corps.interieurHTML
 };
 
 // Fonction de validation
-const isExactMatch = (step, code, patternSet) => {
-  const cleanedCode = code.trim();
-  const regexString = patternSet[step]?.toString().replace(/^\/|\/$/g, "");
-  return new RegExp(`^${regexString}$`, "i").test(cleanedCode);
-};
+// const isExactMatch = (step, code, patternSet) => {
+//   const cleanedCode = code.trim();
+//   const regexString = patternSet[step]?.toString().replace(/^\/|\/$/g, "");
+//   return new RegExp(`^${regexString}$`, "i").test(cleanedCode);
+// };
 
 const isApproximateMatch = (step, code, patternSet) => {
   return patternSet?.[step]?.test(code.trim());
@@ -304,7 +309,7 @@ function Editor() {
     }
     // Étape 1 : Déclencher l'alerte après validation
     if (gameState.tutorialStep === 1) {
-      if (isApproximateMatch(1, cleanedCode, matchByStep)) {
+      if (isApproximateMatch(1, cleanedCode, catMissions)) {
         // Afficher l'alerte avant de passer à l'étape suivante
         alert("Let's go!");
         advanceTutorialStep();
@@ -351,8 +356,8 @@ function Editor() {
       return;
     }
 
-    const isExact = isExactMatch(currentStep, code, matchByStep);
-    const isCatGPTValid = isApproximateMatch(currentStep, code, matchByStep);
+    // const isExact = isExactMatch(currentStep, code, catMissions);
+    const isCatGPTValid = isApproximateMatch(currentStep, code, catMissions);
     if (isCatGPTValid) {
       setFeedbackType("success");
       handleSuccess(
@@ -364,11 +369,11 @@ function Editor() {
         gameState.userNom
       );
 
-      if (isCatGPTValid && !isExact) {
-        const approxMessage =
-          "⏳ Almost ! Tu y étais presque du coup légèrement modifié ton code pour que tout fonctionne perfectly ! 👌";
-        logToTerminal({ text: approxMessage, source: "gpt" });
-      }
+      // if (isCatGPTValid && !isExact) {
+      //   const approxMessage =
+      //     "⏳ Almost ! Tu y étais presque du coup légèrement modifié ton code pour que tout fonctionne perfectly ! 👌";
+      //   logToTerminal({ text: approxMessage, source: "gpt" });
+      // }
     } else {
       setFeedbackType("error");
       handleError(

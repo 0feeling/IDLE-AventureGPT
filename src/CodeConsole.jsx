@@ -75,7 +75,7 @@ export default function CodeConsole() {
         <h2 className="text-yellow-300 text-xs uppercase tracking-wide font-semibold">
           CONSOLE
         </h2>
-        <span className="text-gray-400 text-xs">v1.0.0</span>
+        <span className="text-gray-400 text-xs">v2.4.7</span>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 font-mono border border-gray-700 text-sm space-y-4">

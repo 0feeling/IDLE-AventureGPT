@@ -26,9 +26,9 @@ export default function CristalTerminal() {
 
   return (
     <div className="flex flex-col z-3 bg-gray-900 h-full">
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 px-4 rounded-t py-2 border-b border-blue-700">
-        <span className="font-mono text-sm tracking-wide animate-pulse pb-1 border-b border-blue-700 text-blue-400">
-          CRISTAL_TERMINAL v1.3.7
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 animate-pulse px-4 rounded-t py-2 border-b border-blue-700">
+        <span className="font-mono text-sm tracking-wide pb-1 border-b border-blue-700 text-blue-400">
+          CRISTAL_TERMINAL v7.5.0
         </span>
       </div>
 

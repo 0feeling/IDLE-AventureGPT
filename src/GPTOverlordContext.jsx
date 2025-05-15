@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import generatorsData from "./generatorsData"; // Import des données des générateurs
 import { ValidationService } from "./ValidationService";
-import { matchByStep } from "./Editor.jsx";
+import { catMissions } from "./Editor.jsx";
 
 // Conversion des données du générateur au format attendu
 const formattedGenerators = {};
@@ -241,17 +241,17 @@ export const GPTOverlordContextProvider = ({ children }) => {
       // Validation spécifique à chaque étape
       switch (currentStep) {
         case 0: // Validation du prénom
-          if (!ValidationService.isApproximateMatch(0, prev.code, matchByStep))
+          if (!ValidationService.isApproximateMatch(0, prev.code, catMissions))
             return prev;
           break;
 
         case 1: // Validation de l'alerte
-          if (!ValidationService.isApproximateMatch(1, prev.code, matchByStep))
+          if (!ValidationService.isApproximateMatch(1, prev.code, catMissions))
             return prev;
           break;
 
         case 2: // Validation console.log
-          if (!ValidationService.isApproximateMatch(2, prev.code, matchByStep))
+          if (!ValidationService.isApproximateMatch(2, prev.code, catMissions))
             return prev;
           break;
       }

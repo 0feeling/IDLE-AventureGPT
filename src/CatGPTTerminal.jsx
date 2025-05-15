@@ -23,9 +23,9 @@ export default function CatGPTTerminal() {
 
   return (
     <div className="flex flex-col z-3 bg-gray-900 h-full">
-      <div className="bg-gradient-to-r from-green-900 via-green-800 to-green-900 px-4 py-2 border-b border-green-700">
-        <span className="font-mono text-sm tracking-wide animate-pulse pb-1 border-b border-green-700 text-green-400">
-          CATGPT_TERMINAL v9.2.1
+      <div className="bg-gradient-to-r from-green-900 via-green-800 to-green-900 px-4 animate-pulse py-2 border-b border-green-700">
+        <span className="font-mono text-sm tracking-wide pb-1 border-b border-green-700 text-green-400">
+          CATGPT_TERMINAL v4.2.0
         </span>
       </div>
 
