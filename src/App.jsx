@@ -39,7 +39,7 @@ function AppContent() {
 
       <div className="flex-1 flex flex-col lg:flex-row gap-2 mt-2">
         {/* Colonne gauche - Terminaux */}
-        <div className="lg:w-1/3 flex flex-col border border-gray-700 rounded-lg overflow-hidden">
+        <div className="lg:w-1/3 flex flex-col border border-gray-700 rounded-lg overflow-scroll">
           <div className="flex-1">
             <CatGPTTerminal />
           </div>

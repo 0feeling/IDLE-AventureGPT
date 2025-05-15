@@ -27,23 +27,23 @@ export default function CristalTerminal() {
   return (
     <div className="flex flex-col bg-gray-900 border-r border-blue-800 h-full">
       <div className="bg-blue-900 px-4 py-2 border-b border-blue-700">
-        <span className="font-mono text-sm tracking-wide text-blue-400">
+        <span className="font-mono rounded animate-pulse text-sm tracking-wide text-blue-400">
           CRISTAL_TERMINAL v1.3.7
         </span>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-3 space-y-4">
-        <CristalMissionTerminal />
-
-        <div
-          ref={terminalRef}
-          className="bg-gray-800 rounded-lg border border-blue-700 p-3 space-y-3 min-h-32 max-h-[50vh]"
-        >
-          <CristalFeedback messages={cristalMessages} />
-        </div>
+      <div
+        ref={terminalRef}
+        className="bg-gray-800 rounded-lg border border-blue-700 p-3 space-y-3 min-h-32 max-h-[50vh] overflow-y-auto scroll-terminal-blue"
+      >
+        <CristalFeedback messages={cristalMessages} />
       </div>
 
-      <div className="bg-blue-900 px-4 py-2 text-xs font-mono border-t border-blue-700 text-blue-400">
+      <div className="flex-1 overflow-y-auto p-3 space-y-4">
+        <CristalMissionTerminal />
+      </div>
+
+      <div className="bg-blue-900 animate-pulse rounded px-4 py-2 text-xs font-mono border-t border-blue-700 text-blue-400">
         {gameState.cristalMode
           ? `STEP: ${gameState.cristalStep + 1}/5`
           : `STEP: ${gameState.tutorialStep + 1}/7`}

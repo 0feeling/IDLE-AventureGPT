@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useGPTOverlord } from "./GPTOverlordContext";
-
-function UglyInspirationButton() {
-  const { gameState, setGameState } = useGPTOverlord();
+function UglyInspirationButton({ isActive }) {
+  const { setGameState } = useGPTOverlord();
   const [floatingTexts, setFloatingTexts] = useState([]);
 
   const handleClick = () => {
-    if (gameState.tutorialStep < 4) return;
+    if (!isActive) return;
 
     const id = Date.now();
     setFloatingTexts((prev) => [...prev, { id }]);
@@ -20,12 +19,9 @@ function UglyInspirationButton() {
     }));
   };
 
-  const isActive = gameState.tutorialStep >= 4;
-
   return (
     <div className="flex justify-center items-center mt-6 mb-6">
       <div className="relative inline-block">
-        {/* +1 noir qui sort vers le haut */}
         {floatingTexts.map(({ id }) => (
           <span
             key={id}

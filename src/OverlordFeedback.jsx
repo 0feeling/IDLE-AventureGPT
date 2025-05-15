@@ -18,7 +18,7 @@ export default function OverlordFeedback({ messages }) {
               return (
                 <pre
                   key={index}
-                  className="bg-gray-900 p-3 rounded-md border border-gray-700 text-green-200 break-words whitespace-pre-wrap"
+                  className="bg-gray-900 p-3 rounded-md border border-gray-700 text-green-200 text-sm overflow-x-hidden whitespace-pre-wrap break-words"
                 >
                   {text.split("\n").map((line, lineIndex) => (
                     <div key={lineIndex} className="flex items-start">

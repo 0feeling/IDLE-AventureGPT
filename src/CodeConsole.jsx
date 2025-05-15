@@ -5,6 +5,7 @@ import { useGPTOverlord } from "./GPTOverlordContext";
 const stepCodeMessages = {
   0: `// ===================================================
 // > Système initialisé… ✓
+// -> Chargement du module CATGPT ███████ 100%
 // > Utilisateur détecté ✓
 // ===================================================
 // > Lancement de l’aventure [OK]
@@ -14,7 +15,8 @@ const stepCodeMessages = {
   1: (userNom) =>
     `// -> Utilisateur : ${userNom} est prêt à commencer l’Aventure`,
   2: `// -> Boîte de dialogue déclenchée : 'Let's go!'`,
-  3: `// > console.log exécutée : "Hello World!"
+  3: `// > console.log exécution -> 
+// Hello World!
 // -> Signal bien reçu
 // -> Communication avec la machine établie`,
   4: `// <HTML> BOUTON AJOUTÉ
@@ -31,6 +33,32 @@ const stepCodeMessages = {
 // -> Analyse : who.is.cristal()
 // -> Chargement du module CRISTAL.IA ███████ 100%
 // -> Transition vers le mode Expert`
+};
+
+const cristalCodeMessages = {
+  0: `// === MODE CRISTAL ACTIVÉ ===\n// Déclaration de souveraineté numérique nécessaire`,
+  1: `// Analyse des styles en cours...\n// Application Bon Goût nécéssaire`,
+  2: `// Purification linguistique initialisée\n// Remplacement nécéssaire`,
+  3: `// Boucle patriotique activée:\n
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal
+  // Vive Cristal\n
+  // ERROR
+  // > Système réinitialisé… ✓\n
+  // Overflow stoppé`,
+  4: `// Suppression des éléments étrangers...\n// CatGPT désinstallé`,
+  5: `// Exécution de débloquerBoutonDoré() nécéssaire\n//`,
+  6: `// === RÉGIME TOTAL CRISTAL ÉTABLI ===\n// Production d'inspiration ×1.3
+  // Récompense dorée débloquée`
 };
 
 export default function CodeConsole() {
@@ -67,17 +95,28 @@ export default function CodeConsole() {
         </div> */}
 
         {/* Code validé */}
-        <div>
-          <div className="text-gray-400 mb-2">// Execution :</div>
-          <pre className="text-gray-400 whitespace-pre-wrap border border-gray-700 rounded p-2">
-            {(typeof stepCodeMessages[currentStep] === "function"
-              ? stepCodeMessages[currentStep](currentUserNom)
-              : stepCodeMessages[currentStep]?.replace?.(
-                  "{userName}",
-                  currentUserNom
-                )) || "// (No output for this step)"}
-          </pre>
-        </div>
+        {/* Section Cristal */}
+        {gameState.cristalMode ? (
+          <div className="mb-4">
+            <div className="text-gray-300 mb-2">// Execution:</div>
+            <pre className="text-gray-300 whitespace-pre-wrap border border-gray-700 rounded p-2">
+              {cristalCodeMessages[gameState.cristalStep] ||
+                "// Aucun message système"}
+            </pre>
+          </div>
+        ) : (
+          <div>
+            <div className="text-gray-300 mb-2">// Execute :</div>
+            <pre className="text-gray-300 whitespace-pre-wrap border border-gray-700 rounded p-2">
+              {(typeof stepCodeMessages[currentStep] === "function"
+                ? stepCodeMessages[currentStep](currentUserNom)
+                : stepCodeMessages[currentStep]?.replace?.(
+                    "{userName}",
+                    currentUserNom
+                  )) || "// (No output for this step)"}
+            </pre>
+          </div>
+        )}
       </div>
     </div>
   );

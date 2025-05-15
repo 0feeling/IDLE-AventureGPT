@@ -23,24 +23,24 @@ export default function CatGPTTerminal() {
 
   return (
     <div className="flex flex-col bg-gray-900 border-r border-green-800 h-full">
-      <div className="bg-green-900 px-4 py-2 border-b border-green-700">
-        <span className="font-mono text-sm tracking-wide text-green-400">
+      <div className="bg-gradient-to-r from-green-900 via-green-800 to-green-900 px-4 py-2 border-b border-green-700">
+        <span className="font-mono text-sm tracking-wide animate-pulse pb-1 border-b border-green-700 text-green-400">
           CATGPT_TERMINAL v9.2.1
         </span>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-3 space-y-4">
-        <MissionTerminal />
-
-        <div
-          ref={terminalRef}
-          className="bg-gray-800 rounded-lg border border-green-700 p-3 space-y-3 min-h-32 max-h-[50vh]"
-        >
-          <OverlordFeedback messages={gptMessages} />
-        </div>
+      <div
+        ref={terminalRef}
+        className="bg-gray-800 font-sans border border-green-700 p-3 space-y-3 min-h-32 max-h-[50vh] overflow-y-auto scroll-terminal"
+      >
+        <OverlordFeedback messages={gptMessages} />
       </div>
 
-      <div className="bg-green-900 px-4 py-2 text-xs font-mono border-t border-green-700 text-green-400">
+      <div className="flex-1 overflow-y-scroll p-3 space-y-4">
+        <MissionTerminal />
+      </div>
+
+      <div className="bg-gradient-to-r from-green-900 via-green-800 to-green-900 animate-pulse px-4 py-2 text-xs rounded font-sans border-t border-green-700 text-green-400">
         {gameState.cristalMode
           ? `STEP : ? — Search Tasks for my Friend ... `
           : `CATGPT STEP: ${gameState.tutorialStep + 1}/7`}

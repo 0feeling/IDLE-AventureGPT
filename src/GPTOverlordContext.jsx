@@ -136,7 +136,6 @@ export const GPTOverlordContextProvider = ({ children }) => {
       const newStep = prev.cristalStep + 1;
       const updatedCristalMissions = [...prev.cristalMissions]; // ✅ Une seule déclaration
 
-      // Logique de validation pour purifierLaPage
       if (prev.cristalStep === 5) {
         const isValid = prev.code.includes("débloquerBoutonDoré()");
         if (!isValid) return prev;
@@ -164,7 +163,7 @@ export const GPTOverlordContextProvider = ({ children }) => {
           setGameState((prev) => ({
             ...prev,
             hideOverlord: true,
-            cristalMode: false,
+            cristalMode: true,
             buttons: {
               uglyButtonVisible: false,
               inspirationButtonVisible: true

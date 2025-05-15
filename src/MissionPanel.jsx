@@ -40,7 +40,7 @@ function MissionPanel() {
   };
 
   return (
-    <div className="bg-gray-800 border-t border-gray-700 h-64 md:h-72 lg:h-80 flex flex-col">
+    <div className="bg-gray-800 border-t font-sans border-gray-700 h-64 md:h-72 lg:h-80 flex flex-col">
       {/* En-tête */}
       <div className="bg-gray-900 p-3 border-b border-gray-700 sticky top-0 z-20">
         <h2 className="text-blue-300 text-xs uppercase tracking-wider font-semibold mb-1 flex items-center gap-2">
@@ -50,7 +50,7 @@ function MissionPanel() {
             : "Current Mission"}
         </h2>
 
-        <div className="flex items-start gap-3">
+        <div className="flex items-start font-sans gap-3">
           <div className="mt-0.5">
             {currentMission.validated ? (
               <CheckCircle className="text-green-400" size={18} />
@@ -58,11 +58,7 @@ function MissionPanel() {
               <Circle className="text-gray-400" size={18} />
             )}
           </div>
-          <p
-            className={`text-sm leading-snug break-words whitespace-pre-wrap font-mono ${
-              currentMission.validated ? "text-green-400" : "text-white"
-            }`}
-          >
+          <p className="text-sm leading-snug break-words overflow-y-scroll whitespace-pre-wrap font-mono scrollbar-thin h-32 p-4 text-white">
             {currentMission.instruction}
           </p>
         </div>

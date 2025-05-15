@@ -406,8 +406,8 @@ function Editor() {
   return (
     <div className="flex flex-col bg-gray-800 border-r border-gray-700 h-[400px]">
       <div className="bg-gray-900 p-2 flex justify-between items-center border-b border-gray-700">
-        <span className="text-blue-300 text-sm">
-          {gameState.userNom ? `${gameState.userNom}'s Editor.js` : "Editor.js"}
+        <span className="text-yellow-300 text-sm">
+          {gameState.userNom ? `${gameState.userNom}'s EDITOR.js` : "EDITOR.js"}
         </span>
         <button
           onClick={handleCodeExecution}
