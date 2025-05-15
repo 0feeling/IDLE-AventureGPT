@@ -4,42 +4,43 @@ import MissionPanel from "./MissionPanel"; // Import du composant MissionPanel
 import { ValidationService } from "./ValidationService";
 
 const DEV_MODE = true;
-
-const matchByStep = {
+//Mes Regex:
+export const matchByStep = {
   0: DEV_MODE
     ? /^m$|^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i
     : /^[a-zA-ZÀ-ÿ][\wÀ-ÿ-]{1,20}$/i,
-
+  // prénom de l'user, récupéré dans {userNom}
   1: DEV_MODE
     ? /^m$|alert\s*\(\s*(['"])\s*let'?s\s+go!?[\s!]*\1\s*\)\s*;?/i
     : /alert\s*\(\s*(['"])\s*let'?s\s+go!?[\s!]*\1\s*\)\s*;?/i,
-
+  // alert('let's go')
   2: DEV_MODE
     ? /^m$|console\.log\s*\(\s*(['"])\s*!*hello[\s-]?world!?\s*!*\1\s*\)\s*;?/i
     : /console\.log\s*\(\s*(['"])\s*!*hello[\s-]?world!?\s*!*\1\s*\)\s*;?/i,
-
+  // console.log('Hello World')
   3: DEV_MODE
     ? /^m$|<button[^>]*>\s*inspiration\s*<\/button>/i
     : /<button[^>]*>\s*inspiration\s*<\/button>/i,
-
+  // <button>Inspitation</button>
   4: DEV_MODE
     ? /^m$|function\s+gainInspiration\s*\(\s*\)\s*\{?[^}]*\}?/i
     : /function\s+gainInspiration\s*\(\s*\)\s*\{?[^}]*\}?/i,
-
+  // function gainInspiration()
   5: DEV_MODE
     ? /^m$|function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*\d+\s*\)\s*;?\s*\}/i
     : /function\s+autoClick\s*\(\s*\)\s*\{\s*setInterval\s*\(\s*gainInspiration\s*,\s*\d+\s*\)\s*;?\s*\}/i,
-
+  // function autoclick(){setInterval(gainInspiration, 4000)}
   6: DEV_MODE
     ? /^m$|\b(who\.is\.cristal\s*\(\s*\)|system\.debug\s*\(.*\))/i
     : /\b(who\.is\.cristal\s*\(\s*\)|system\.debug\s*\(.*\))/i
+  // who.is.cristal or system.debug
 };
 
 const cristalMissions = {
   0: DEV_MODE
     ? /^m$|(?=.*\blet\b)?(?=.*\b(freedom|libert[ée]|liberty)\b)(?=.*\b(true|vrai[ea]?)\b)/i
     : /(?=.*\blet\b)?(?=.*\b(freedom|libert[ée]|liberty)\b)(?=.*\b(true|vrai[ea]?)\b)/i,
-
+  // let freedom = true
   1: DEV_MODE
     ? /^m$|(?=.*\b(textarea|editor)\b)(?=.*(bleu|blue|#0055A4|#00f|#0000ff))(?=.*(blanc|white|#fff|#ffffff))(?=.*(rouge|red|#EF4135|#f00|#ff0000))/i
     : /(?=.*\b(textarea|editor)\b)(?=.*(bleu|blue|#0055A4|#00f|#0000ff))(?=.*(blanc|white|#fff|#ffffff))(?=.*(rouge|red|#EF4135|#f00|#ff0000))/i,

@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import generatorsData from "./generatorsData"; // Import des données des générateurs
 import { ValidationService } from "./ValidationService";
+import { matchByStep } from "./Editor.jsx";
 
 // Conversion des données du générateur au format attendu
 const formattedGenerators = {};
@@ -136,6 +137,10 @@ export const GPTOverlordContextProvider = ({ children }) => {
       const updatedCristalMissions = [...prev.cristalMissions]; // ✅ Une seule déclaration
 
       // Logique de validation pour purifierLaPage
+      if (prev.cristalStep === 5) {
+        const isValid = prev.code.includes("débloquerBoutonDoré()");
+        if (!isValid) return prev;
+      }
       if (prev.cristalStep === 2) {
         const cleanedCode = prev.code.replace(/\s+/g, "").toLowerCase();
         const isValid =
@@ -234,9 +239,25 @@ export const GPTOverlordContextProvider = ({ children }) => {
     setGameState((prev) => {
       const currentStep = prev.tutorialStep;
       const nextStep = currentStep + 1;
-      if (prev.tutorialStep >= prev.missions.length - 1) return prev;
+      // Validation spécifique à chaque étape
+      switch (currentStep) {
+        case 0: // Validation du prénom
+          if (!ValidationService.isApproximateMatch(0, prev.code, matchByStep))
+            return prev;
+          break;
 
-      // Crée une copie mise à jour des missions
+        case 1: // Validation de l'alerte
+          if (!ValidationService.isApproximateMatch(1, prev.code, matchByStep))
+            return prev;
+          break;
+
+        case 2: // Validation console.log
+          if (!ValidationService.isApproximateMatch(2, prev.code, matchByStep))
+            return prev;
+          break;
+      }
+
+      if (prev.tutorialStep >= prev.missions.length - 1) return prev;
       const updatedMissions = prev.missions.map((mission, index) => {
         if (index === currentStep) {
           return { ...mission, validated: true };
