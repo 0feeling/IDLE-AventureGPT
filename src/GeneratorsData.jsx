@@ -1,7 +1,227 @@
 // ... premières entrées précédemment définies
 
 const GeneratorsData = [
-  // ... IDs 0 à 19 ici
+  {
+    id: 0,
+    name: "Gribouilleur de Serviettes",
+    description:
+      "Dessine des idées pendant les réunions qui n'ont rien à voir.",
+    upgradeName: "Gribouilleur de Nappes de Restaurant",
+    baseCost: 10,
+    baseInspirationPerSecond: 0.1,
+    upgradeInspirationPerSecond: 0.2,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 1,
+    name: "Stagiaire qui Brainstorm",
+    description: "Propose 100 idées par minute, dont 98 sont inutiles.",
+    upgradeName: "Stagiaire Caféiné qui Délire",
+    baseCost: 30,
+    baseInspirationPerSecond: 0.3,
+    upgradeInspirationPerSecond: 0.5,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 2,
+    name: "Post-it Possédé",
+    description: "Colle des idées sur les murs... et sur les collègues.",
+    upgradeName: "Post-it qui Chuchote la Vérité",
+    baseCost: 60,
+    baseInspirationPerSecond: 0.6,
+    upgradeInspirationPerSecond: 1,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 3,
+    name: "Machine à Cafés d'Idées",
+    description: "Chaque café déclenche un éclair de génie. Ou pas.",
+    upgradeName: "Distributeur d'Espresso Visionnaire",
+    baseCost: 100,
+    baseInspirationPerSecond: 1,
+    upgradeInspirationPerSecond: 1.5,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 4,
+    name: "Générateur de Slogans Absurdes",
+    description: "Transforme chaque mot en concept marketing bancal.",
+    upgradeName: "Générateur de Titres de Startup",
+    baseCost: 180,
+    baseInspirationPerSecond: 2,
+    upgradeInspirationPerSecond: 3,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 5,
+    name: "ToDo List Magique",
+    description: "Raye les tâches avant même qu'elles existent.",
+    upgradeName: "Agenda qui Anticipe tes Pensées",
+    baseCost: 300,
+    baseInspirationPerSecond: 4,
+    upgradeInspirationPerSecond: 6,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 6,
+    name: "Chat d'Agence Créative",
+    description: "Ne code rien, mais critique tout. Miaou.",
+    upgradeName: "Chat Directeur Artistique",
+    baseCost: 500,
+    baseInspirationPerSecond: 7,
+    upgradeInspirationPerSecond: 10,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 7,
+    name: "Carnet de Rêves Numérique",
+    description: "Enregistre tes rêves et les vend à des start-ups.",
+    upgradeName: "Journal Onirique Connecté",
+    baseCost: 750,
+    baseInspirationPerSecond: 11,
+    upgradeInspirationPerSecond: 15,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 8,
+    name: "Boîte à Idées Vivante",
+    description: "Grince quand tu n’écoutes pas ses suggestions.",
+    upgradeName: "Coffre Idéologique à Propulsion",
+    baseCost: 1200,
+    baseInspirationPerSecond: 16,
+    upgradeInspirationPerSecond: 21,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 9,
+    name: "Miroir à Pensées Profondes",
+    description: "Réfléchit à ta place. Te juge aussi, parfois.",
+    upgradeName: "Miroir qui Philosophe",
+    baseCost: 1800,
+    baseInspirationPerSecond: 23,
+    upgradeInspirationPerSecond: 30,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 10,
+    name: "Hamster sur Roue Philosophique",
+    description: "Court vers des concepts métaphysiques sans fin.",
+    upgradeName: "Hamster Méditant en Lévitation",
+    baseCost: 2500,
+    baseInspirationPerSecond: 33,
+    upgradeInspirationPerSecond: 42,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 11,
+    name: "Brainstormeur Anonyme",
+    description: "Crée des idées en cachette. Beaucoup trop en fait.",
+    upgradeName: "Brainstormeur Compulsif",
+    baseCost: 3500,
+    baseInspirationPerSecond: 45,
+    upgradeInspirationPerSecond: 55,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 12,
+    name: "Esprit de Synthèse",
+    description: "Condense tout sauf ce qu'il faut vraiment retenir.",
+    upgradeName: "Esprit de Synthèse Turbo",
+    baseCost: 5000,
+    baseInspirationPerSecond: 60,
+    upgradeInspirationPerSecond: 72,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 13,
+    name: "Générateur de Scénarios",
+    description: "Crée 3 fins alternatives à chaque idée.",
+    upgradeName: "Générateur de Sagas",
+    baseCost: 7000,
+    baseInspirationPerSecond: 80,
+    upgradeInspirationPerSecond: 95,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 14,
+    name: "Idéateur de l’Absurde",
+    description: "Ses idées sont nulles. Et pourtant... on adore.",
+    upgradeName: "Idéateur de Génie Incompréhensible",
+    baseCost: 10000,
+    baseInspirationPerSecond: 100,
+    upgradeInspirationPerSecond: 120,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 15,
+    name: "Éponge à Concepts",
+    description: "Absorbe tout. Même les idées des autres.",
+    upgradeName: "Éponge Inspirée",
+    baseCost: 13000,
+    baseInspirationPerSecond: 120,
+    upgradeInspirationPerSecond: 140,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 16,
+    name: "Cadenceur d'Épiphanies",
+    description: "Produit des révélations à l'heure pile.",
+    upgradeName: "Cadenceur de Génie",
+    baseCost: 16000,
+    baseInspirationPerSecond: 145,
+    upgradeInspirationPerSecond: 170,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 17,
+    name: "Réchauffeur d'Idées",
+    description: "Recycle les anciennes idées, façon micro-ondes.",
+    upgradeName: "Réchauffeur Créatif Nouvelle Génération",
+    baseCost: 20000,
+    baseInspirationPerSecond: 170,
+    upgradeInspirationPerSecond: 200,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 18,
+    name: "Moteur de Métaphores",
+    description: "Transforme tout en fable absurde.",
+    upgradeName: "Métaphoriseur Poétique",
+    baseCost: 25000,
+    baseInspirationPerSecond: 200,
+    upgradeInspirationPerSecond: 240,
+    quantity: 0,
+    unlocked: false
+  },
+  {
+    id: 19,
+    name: "Orchestrateur de Synapses",
+    description: "Connecte des idées comme des feux d'artifice.",
+    upgradeName: "Chef d'Orchestre Cognitif",
+    baseCost: 31000,
+    baseInspirationPerSecond: 235,
+    upgradeInspirationPerSecond: 280,
+    quantity: 0,
+    unlocked: false
+  },
 
   {
     id: 20,
