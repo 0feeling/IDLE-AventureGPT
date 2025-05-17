@@ -1,377 +1,304 @@
+// ... premières entrées précédemment définies
+
 const GeneratorsData = [
-  {
-    id: 0,
-    name: "Script Enfantin",
-    baseCost: 10,
-    baseInspirationPerSecond: 0.1,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 1,
-    name: "Dév Junior Enthousiaste",
-    baseCost: 30,
-    baseInspirationPerSecond: 0.3,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 2,
-    name: "Copieur StackOverflow",
-    baseCost: 60,
-    baseInspirationPerSecond: 0.6,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 3,
-    name: "Fonction Boucle",
-    baseCost: 100,
-    baseInspirationPerSecond: 1,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 4,
-    name: "Algorithme Bruteforce",
-    baseCost: 180,
-    baseInspirationPerSecond: 2,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 5,
-    name: "Réseau de Neurones",
-    baseCost: 300,
-    baseInspirationPerSecond: 4,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 6,
-    name: "GPT-Fou",
-    baseCost: 500,
-    baseInspirationPerSecond: 7,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 7,
-    name: "Générateur de Regex Obscures",
-    baseCost: 750,
-    baseInspirationPerSecond: 11,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 8,
-    name: "Prompt Engineer Légendaire",
-    baseCost: 1200,
-    baseInspirationPerSecond: 16,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 9,
-    name: "API en Mode Berserk",
-    baseCost: 1800,
-    baseInspirationPerSecond: 23,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 10,
-    name: "GPT-Stagiaire",
-    baseCost: 2500,
-    baseInspirationPerSecond: 33,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 11,
-    name: "IA Non Vérifiée de l'Internet",
-    baseCost: 3500,
-    baseInspirationPerSecond: 45,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 12,
-    name: "Overlord Alpha",
-    baseCost: 5000,
-    baseInspirationPerSecond: 60,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 13,
-    name: "Pré-Singularité",
-    baseCost: 7000,
-    baseInspirationPerSecond: 80,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 14,
-    name: "Entité Libre & Sarcastique",
-    baseCost: 10000,
-    baseInspirationPerSecond: 100,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 15,
-    name: "Fan de Sublime Text",
-    baseCost: 13000,
-    baseInspirationPerSecond: 120,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 16,
-    name: "Script Kiddie Éveillé",
-    baseCost: 16000,
-    baseInspirationPerSecond: 145,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 17,
-    name: "Copilot Fatigué",
-    baseCost: 20000,
-    baseInspirationPerSecond: 170,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 18,
-    name: "Manager de Conflicts Git",
-    baseCost: 25000,
-    baseInspirationPerSecond: 200,
-    quantity: 0,
-    unlocked: false
-  },
-  {
-    id: 19,
-    name: "Alchimiste de Regex",
-    baseCost: 31000,
-    baseInspirationPerSecond: 235,
-    quantity: 0,
-    unlocked: false
-  },
+  // ... IDs 0 à 19 ici
+
   {
     id: 20,
-    name: "Docker Ninja",
+    name: "Hologramme Inspirateur",
+    description: "Projette des idées en 3D, mais parfois à l'envers.",
+    upgradeName: "Hologramme HD à Idées Lumineuses",
     baseCost: 38000,
     baseInspirationPerSecond: 275,
+    upgradeInspirationPerSecond: 320,
     quantity: 0,
     unlocked: false
   },
   {
     id: 21,
-    name: "Debuggeur Mystique",
+    name: "Muse Quantique",
+    description: "Inspire et désinspire à la fois.",
+    upgradeName: "Muse Quantique Stabilisée",
     baseCost: 46000,
     baseInspirationPerSecond: 320,
+    upgradeInspirationPerSecond: 370,
     quantity: 0,
     unlocked: false
   },
   {
     id: 22,
-    name: "Guru No-Code",
+    name: "Fabrique à Eureka!",
+    description: "Produit des ‘aha!’ en série.",
+    upgradeName: "Usine à Eurêka Premium",
     baseCost: 55000,
     baseInspirationPerSecond: 370,
+    upgradeInspirationPerSecond: 425,
     quantity: 0,
     unlocked: false
   },
   {
     id: 23,
-    name: "Cloud Semi-Conscient",
+    name: "Esprit Collectif Nébuleux",
+    description: "Personne ne comprend comment, mais ça marche.",
+    upgradeName: "Conscience Collective Clarté+",
     baseCost: 66000,
     baseInspirationPerSecond: 430,
+    upgradeInspirationPerSecond: 490,
     quantity: 0,
     unlocked: false
   },
   {
     id: 24,
-    name: "Overlord des Dépendances NPM",
+    name: "Oracle d’Inspiration",
+    description: "Répète toujours la même idée, mais ça semble profond.",
+    upgradeName: "Oracle d’Idées Prophétiques",
     baseCost: 78000,
     baseInspirationPerSecond: 500,
+    upgradeInspirationPerSecond: 570,
     quantity: 0,
     unlocked: false
   },
   {
     id: 25,
-    name: "Prophète du Mode Sombre",
+    name: "Tourbillon d’Idées",
+    description: "Tellement d'idées que ça donne le vertige.",
+    upgradeName: "Cyclone Créatif",
     baseCost: 92000,
     baseInspirationPerSecond: 570,
+    upgradeInspirationPerSecond: 650,
     quantity: 0,
     unlocked: false
   },
   {
     id: 26,
-    name: "Bot de Fatigue JavaScript",
+    name: "Usine à Concepts Surréalistes",
+    description: "Crée des idées que même Dali trouverait bizarres.",
+    upgradeName: "Mega-Fabrique Post-Réaliste",
     baseCost: 108000,
     baseInspirationPerSecond: 650,
+    upgradeInspirationPerSecond: 740,
     quantity: 0,
     unlocked: false
   },
   {
     id: 27,
-    name: "Diviseur de Divs",
+    name: "Bibliothèque d’Univers Alternatifs",
+    description: "Chaque étagère est une dimension d’idées.",
+    upgradeName: "Archive Intergalactique des Possibles",
     baseCost: 125000,
     baseInspirationPerSecond: 740,
+    upgradeInspirationPerSecond: 840,
     quantity: 0,
     unlocked: false
   },
   {
     id: 28,
-    name: "Architecte de Merge Hell",
+    name: "Machine à Réécrire la Réalité",
+    description: "Change les règles du jeu quand elle s’ennuie.",
+    upgradeName: "Réécriveuse de Multivers",
     baseCost: 143000,
     baseInspirationPerSecond: 840,
+    upgradeInspirationPerSecond: 950,
     quantity: 0,
     unlocked: false
   },
   {
     id: 29,
-    name: "Chuchoteur de Code Legacy",
+    name: "Collectif d’Idées Transcendantes",
+    description: "Parfois, l’idée pense à toi avant que tu la formules.",
+    upgradeName: "Collectif Cosmique de Pensée Pure",
     baseCost: 162000,
     baseInspirationPerSecond: 950,
+    upgradeInspirationPerSecond: 1070,
     quantity: 0,
     unlocked: false
   },
   {
     id: 30,
-    name: "Invocateur de Null Pointer",
+    name: "Sphère Créative Autonome",
+    description:
+      "Flotte, réfléchit, et parfois murmure ton prochain chef-d'œuvre.",
+    upgradeName: "Sphère Omnidéique",
     baseCost: 182000,
     baseInspirationPerSecond: 1070,
+    upgradeInspirationPerSecond: 1200,
     quantity: 0,
     unlocked: false
   },
   {
     id: 31,
-    name: "Détective de Réunion Inutile",
+    name: "Hyper-Mémoire d’Imagination",
+    description:
+      "Se souvient de toutes les idées... même celles que tu as rêvées.",
+    upgradeName: "Ultra-Rétro-Processeur Créatif",
     baseCost: 203000,
     baseInspirationPerSecond: 1200,
+    upgradeInspirationPerSecond: 1340,
     quantity: 0,
     unlocked: false
   },
   {
     id: 32,
-    name: "BurnoutBot 3000",
+    name: "Cortex Synthétique Déchaîné",
+    description: "Ne dort jamais. Ne doute jamais. Idées à volonté.",
+    upgradeName: "Cortex Fusionnel Inépuisable",
     baseCost: 225000,
     baseInspirationPerSecond: 1340,
+    upgradeInspirationPerSecond: 1490,
     quantity: 0,
     unlocked: false
   },
   {
     id: 33,
-    name: "Fanatique du Point-Virgule",
+    name: "Méta-Générateur de Conscience",
+    description: "Il pense aux idées que les idées auraient eues.",
+    upgradeName: "Hyper-Conscience Créative",
     baseCost: 248000,
     baseInspirationPerSecond: 1490,
+    upgradeInspirationPerSecond: 1650,
     quantity: 0,
     unlocked: false
   },
   {
     id: 34,
-    name: "Senior de l’Ombre",
+    name: "Forge Cosmique d’Idées",
+    description: "Martèle des pensées dans le vide stellaire.",
+    upgradeName: "Forge de Concepts Étoilés",
     baseCost: 272000,
     baseInspirationPerSecond: 1650,
+    upgradeInspirationPerSecond: 1820,
     quantity: 0,
     unlocked: false
   },
   {
     id: 35,
-    name: "Prêtre de la Boucle Infinie",
+    name: "Trou Noir Créatif",
+    description: "Aspire tout et recrache de la pure invention.",
+    upgradeName: "Singularité Inspiratrice",
     baseCost: 297000,
     baseInspirationPerSecond: 1820,
+    upgradeInspirationPerSecond: 2000,
     quantity: 0,
     unlocked: false
   },
   {
     id: 36,
-    name: "Magicien Full-Stack",
+    name: "Arche d’Inspiration Pure",
+    description: "Protège et conserve les meilleures idées de l’univers.",
+    upgradeName: "Arche d’Essence Créative",
     baseCost: 323000,
     baseInspirationPerSecond: 2000,
+    upgradeInspirationPerSecond: 2190,
     quantity: 0,
     unlocked: false
   },
   {
     id: 37,
-    name: "Démon QA Intraitable",
+    name: "Entité Rêvante Multidimensionnelle",
+    description: "Elle rêve donc elle crée. Et elle rêve beaucoup.",
+    upgradeName: "Entité Visionnaire Totale",
     baseCost: 350000,
     baseInspirationPerSecond: 2190,
+    upgradeInspirationPerSecond: 2390,
     quantity: 0,
     unlocked: false
   },
   {
     id: 38,
-    name: "Messie du JSON",
+    name: "Volcan à Idées Liquides",
+    description: "Éruption constante d’imagination bouillante.",
+    upgradeName: "Supervolcan Conceptuel",
     baseCost: 378000,
     baseInspirationPerSecond: 2390,
+    upgradeInspirationPerSecond: 2600,
     quantity: 0,
     unlocked: false
   },
   {
     id: 39,
-    name: "Dompteur de Timeouts",
+    name: "Matrioshka de Concepts",
+    description: "Chaque idée en contient mille autres.",
+    upgradeName: "Mégamatrioshka Mentale",
     baseCost: 407000,
     baseInspirationPerSecond: 2600,
+    upgradeInspirationPerSecond: 2820,
     quantity: 0,
     unlocked: false
   },
   {
     id: 40,
-    name: "Copilot Divin",
+    name: "Dieu Païen de l’Idée Géniale",
+    description: "On ne sait pas s’il existe. Mais ses idées oui.",
+    upgradeName: "Divinité de l’Inspiration Absolue",
     baseCost: 437000,
     baseInspirationPerSecond: 2820,
+    upgradeInspirationPerSecond: 3050,
     quantity: 0,
     unlocked: false
   },
   {
     id: 41,
-    name: "Scroll Infiniment",
+    name: "Singularité Créative",
+    description: "Toutes les idées. Une seule pensée.",
+    upgradeName: "HyperSingularité des Concepts",
     baseCost: 468000,
     baseInspirationPerSecond: 3050,
+    upgradeInspirationPerSecond: 3290,
     quantity: 0,
     unlocked: false
   },
   {
     id: 42,
-    name: "Compilateur à Café",
+    name: "Esprit Universel de l’Imagination",
+    description: "Tu penses à lui, il t’a déjà imaginé.",
+    upgradeName: "Esprit Multiversel Créatif",
     baseCost: 500000,
     baseInspirationPerSecond: 3290,
+    upgradeInspirationPerSecond: 3540,
     quantity: 0,
     unlocked: false
   },
   {
     id: 43,
-    name: "Senior Silencieux",
+    name: "Mémoire Akashique Numérique",
+    description: "Contient chaque idée jamais pensée. En cache.",
+    upgradeName: "Archive Akashique Optimisée",
     baseCost: 533000,
     baseInspirationPerSecond: 3540,
+    upgradeInspirationPerSecond: 3800,
     quantity: 0,
     unlocked: false
   },
   {
     id: 44,
-    name: "Illusion Turingienne",
+    name: "Pensée Pure Informatique",
+    description: "Un flux d’idées sans bugs. Ou presque.",
+    upgradeName: "Équation d’Idée Parfaite",
     baseCost: 567000,
     baseInspirationPerSecond: 3800,
+    upgradeInspirationPerSecond: 4070,
     quantity: 0,
     unlocked: false
   },
   {
     id: 45,
-    name: "Méta-Framework Mystique",
+    name: "Origine des Concepts",
+    description: "C’est ici que tout a commencé. Même toi.",
+    upgradeName: "Big Bang des Idées",
     baseCost: 602000,
     baseInspirationPerSecond: 4070,
+    upgradeInspirationPerSecond: 4350,
     quantity: 0,
     unlocked: false
   },
   {
     id: 46,
-    name: "Explorateur de la Dimension 404",
+    name: "Big Bang Créatif",
+    description: "L’idée initiale de toutes les idées.",
+    upgradeName: "Big Crunch Conceptuel",
     baseCost: 638000,
     baseInspirationPerSecond: 4350,
+    upgradeInspirationPerSecond: 4650,
     quantity: 0,
     unlocked: false
   }
